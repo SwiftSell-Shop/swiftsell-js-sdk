@@ -1,0 +1,40 @@
+on: 
+  push:
+    branches: [ main ]
+
+#https://sha.ws/automatic-upload-to-google-cloud-storage-with-github-actions.html
+#https://medium.com/@thrinadh.kumpatla/transferring-artifacts-to-google-cloud-storage-using-github-actions-ci-cd-b6231a025c5
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          
+      - name: Install gcloud SDK.
+        run: |
+          sudo apt-get update && sudo apt-get install google-cloud-sdk 
+
+      - name: Install and Bundle file
+        run: cd apps/swiftsell-sdk/ && npm ci && npm run build && ls -al
+
+      - name: Activate Service Account 
+        env: 
+          GCLOUD_AUTH: ${{ secrets.GCP_SA_KEY }}
+        run: |
+          echo "$GCLOUD_AUTH" | base64 --decode > "$HOME"/gcloud.json
+          sh -c "gcloud auth activate-service-account --key-file=$HOME/gcloud.json $*"
+          
+      # - name: Upload artifact 
+      # - shell: bash
+      #   run: |
+      #     buildID=$(date +'%d-%b-%Y-%H-%M-%S')
+      #     cd apps/swiftsell-sdk/dist 
+      #     ls -al
+      #     echo running on branch ${GITHUB_REF##*/}
+      #     gsutil cp bundle.js gs://swiftsell_themes/sdk/bundle.js
