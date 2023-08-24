@@ -4,4 +4,4 @@ An SDK for SwiftSell API <https://api.swiftsell.shop/docs> compatible with Brows
 
 # Bundling
 
-This uses webpack to bundle to make it compatible in browser, with commonJS and AMD - <https://webpack.js.org/guides/author-libraries/>
+This uses webpack to bundle in order to make it compatible for browsers, with commonJS and AMD - <https://webpack.js.org/guides/author-libraries/>
