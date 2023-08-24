@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Test working</h1>
+
+
+    <script src="https://storage.googleapis.com/swiftsell_themes/sdk/bundle.js"></script>
+    <script>
+        async function getData() {
+             const d = new SDK.SwiftSellSDK("EKDWMKPWMGECABJZLGSL");
+            //const all = await d.addToCart("649acf3c44b33f6287239f58",3);
+            const all = await d.getCartItems('cart-15ba4ec6-430f-4151-ae8a-bcdf96604281')
+            //const all = await d.removeFromCart("649acf3c44b33f6287239f58",'cart-15ba4ec6-430f-4151-ae8a-bcdf96604281');
+            console.log(all);
+        }
+
+        getData()
+
+       
+    </script>
+</body>
+</html>
