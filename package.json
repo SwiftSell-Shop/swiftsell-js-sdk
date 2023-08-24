@@ -13,7 +13,5 @@
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   },
-  "publishConfig": {
-    "@anietz:registry": "https://npm.pkg.github.com"
-  }
+  "repository": "git@github.com:SwiftSell-Shop/swiftsell-js-sdk"
 }
