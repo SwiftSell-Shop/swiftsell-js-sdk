@@ -1,5 +1,5 @@
 {
-  "name": "@anietz/swiftsellsdk",
+  "name": "@anietz/swiftsell-js-sdk",
   "version": "1.0.0",
   "private": false,
   "scripts": {
