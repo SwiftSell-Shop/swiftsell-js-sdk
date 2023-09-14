@@ -1,3 +1,3 @@
 export interface ObjectType {
-    [key: string]: string | number | undefined | ObjectType | ObjectType[]
+    [key: string]: string | number | boolean | undefined | ObjectType | ObjectType[]
 }

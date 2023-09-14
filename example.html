@@ -1,28 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
     <h1>Test working</h1>
 
 
-    <script src="https://storage.googleapis.com/swiftsell_themes/sdk/bundle.js"></script>
+    <script src="dist/bundle.js"></script>
     <script>
         async function getData() {
-             const d = new SDK.SwiftSellSDK("EKDWMKPWMGECABJZLGSL");
-            //const all = await d.addToCart("649acf3c44b33f6287239f58",3);
-            const all = await d.getCartItems('cart-15ba4ec6-430f-4151-ae8a-bcdf96604281')
+            //const d = new SDK.SwiftSellSDK("EKDWMKPWMGECABJZLGSL", "https://api.swiftsell.shop/api");
+            //const all = await d.addToCart("64a422349531a26aceec5167", 3);
+            //const all = await d.getCartItems('cart-89fea1d2-fb24-4dcc-8105-67ed90bf155b')
+            // const all = await d.createOrderWithoutAuth({
+            //     cartId: 'cart-89fea1d2-fb24-4dcc-8105-67ed90bf155b',
+            //     gatewayReference: 'hhjjjj',
+            //     paymentGatewayProcessor: 'FLUTTERWAVE',
+            //     customerPickUp: true,
+            //     name: "Ani",
+            //     email: "johndow@gmail.com",
+            //     phone: "0801112222222",
+            //     deliveryNotes: "I love your meal"
+            // })
             //const all = await d.removeFromCart("649acf3c44b33f6287239f58",'cart-15ba4ec6-430f-4151-ae8a-bcdf96604281');
             console.log(all);
         }
 
         getData()
 
-       
+
     </script>
 </body>
+
 </html>

@@ -37,6 +37,21 @@ export interface ICartData {
     deliveryNotes?: string;
 }
 
+export interface ICreateOrderWithoutAccountProps {
+    cartId: string,
+    gatewayReference: string,
+    paymentGatewayProcessor: 'FLUTTERWAVE' | 'PAYSTACK',
+    name: string,
+    email: string,
+    phone: string,
+    customerPickUp?: boolean,
+    deliveryAddress?: string,
+    latitude?: number,
+    longitude?: number,
+    referralCode?: string,
+    deliveryNotes?: string,
+    locationId?: string
+}
 
 export interface ISwiftSellSDK {
     getProducts: (page: number,
@@ -53,11 +68,10 @@ export interface ISwiftSellSDK {
         addons?: Addons[]) => Promise<ICartData>;
     removeFromCart: (productId: string,
         cartId: string) => Promise<ICartData>;
-    checkoutCart: () => void;
+    createOrderWithoutAuth: (data: ICreateOrderWithoutAccountProps) => void;
     getCartItems: (cartId: string) => Promise<ICartData>;
 
     login?: () => void;
     register?: () => void;
     logout?: () => void;
-    checkoutCartWithAuth?: () => void;
 }

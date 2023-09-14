@@ -7,8 +7,8 @@ import { ObjectType } from "./types/others";
 export class SwiftSellSDK implements ISwiftSellSDK {
     private apiClient: ApiClient;
 
-    constructor(apiKey: string) {
-        this.apiClient = new ApiClient(apiKey)
+    constructor(apiKey: string, baseUrl: string) {
+        this.apiClient = new ApiClient(apiKey, baseUrl)
     }
 
     private async handleError(response: Response) {
@@ -98,7 +98,44 @@ export class SwiftSellSDK implements ISwiftSellSDK {
         return result.data;
     }
 
-    public async checkoutCart(): Promise<any> {
+    public async createOrderWithoutAuth({
+        cartId, gatewayReference, paymentGatewayProcessor,
+        customerPickUp,
+        locationId, name, email, phone,
+        deliveryAddress, latitude, longitude,
+        referralCode, deliveryNotes
+
+    }: {
+
+        cartId: string,
+        gatewayReference: string,
+        paymentGatewayProcessor: 'FLUTTERWAVE' | 'PAYSTACK',
+        name: string,
+        email: string,
+        phone: string,
+        customerPickUp?: boolean,
+        deliveryAddress?: string,
+        latitude?: number,
+        longitude?: number,
+        referralCode?: string,
+        deliveryNotes?: string,
+        locationId?: string
+    }): Promise<any> {
+
+        const response = await this.apiClient.POST(`/customer/create_order_and_account`, {
+            cartId, gatewayReference, paymentGatewayProcessor,
+            customerPickUp,
+            locationId, name, email, phone,
+            deliveryAddress, latitude, longitude,
+            referralCode, deliveryNotes
+
+        });
+        if (!response.ok) {
+            await this.handleError(response);
+        }
+
+        const result = await response.json()
+        return result.data;
 
     }
 }

@@ -1,14 +1,15 @@
 import { ObjectType } from "./types/others";
 
 export class ApiClient {
-    private API_BASE_URL: string = "https://api.swiftsell.shop/api";
+    private API_BASE_URL: string;
     private SWIFT_SELL_KEY: string;
     private defaultHeaders: ObjectType = {
         'Content-Type': 'application/json',
     };
 
-    constructor(apiKey: string) {
+    constructor(apiKey: string, baseUrl: string) {
         this.SWIFT_SELL_KEY = apiKey;
+        this.API_BASE_URL = baseUrl
     }
 
     GET = async (urlPath: string, headers: ObjectType = {}) => {
