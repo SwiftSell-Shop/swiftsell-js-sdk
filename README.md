@@ -4,6 +4,7 @@ This SDK aims to help the development of integrations with
 [SwiftSell](https://www.SwiftSell.shop) that use JavaScript, providing an easy
 interface to communicate with
 [SwiftSell's REST API](https://api.SwiftSell.shop/docs/).
+The SDK is compatible with Browser, CommonJS and ECMA.
 
 ## Requirements
 
@@ -14,6 +15,10 @@ To use this SDK, you will need:
 Node installation will include [NPM](https://www.npmjs.com/), which is
 responsible for dependency management.
 
+## Bundling
+
+This uses webpack to bundle in order to make it compatible for browsers, with commonJS and AMD - <https://webpack.js.org/guides/author-libraries/>
+
 ## Installation
 
 ### Node.js
@@ -21,6 +26,17 @@ responsible for dependency management.
 `npm install npm i @anietz/swiftsell-js-sdk`
 
 `import SwiftSell from '@anietz/swiftsell-js-sdk';`
+
+### Browser
+
+Reference the `bundle.js` file in the package `dist` folder.
+
+`<script src="dist/bundle.js"></script>`
+
+```js
+const swiftsellInstance = new SDK.SwiftSellSDK("EKDWMKPWMGECABJZLGSL", "https://api.swiftsell.shop/api");
+const cartItems = await d.getCartItems('cart-89ea1d2-094dcc-8105-67ed90bf155b');
+```
 
 ## Usage
 
@@ -32,7 +48,7 @@ calls and parameters described in
 
 Before executing any request, you need to authorize the calls to the API:
 
-#### Using a permanent token
+#### Using API key
 
 ```js
 const swiftSellSDK = new SwiftSell("ETEYDGGDGDJDJDJDJDD", "https//api.swiftSell.shop");
