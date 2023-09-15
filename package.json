@@ -1,6 +1,6 @@
 {
   "name": "@anietz/swiftsell-js-sdk",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "private": false,
   "scripts": {
     "build": "tsc && webpack",
