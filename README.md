@@ -27,6 +27,10 @@ This uses webpack to bundle in order to make it compatible for browsers, with co
 
 `import SwiftSell from '@anietz/swiftsell-js-sdk';`
 
+### Build
+
+`npm run build`
+
 ### Browser
 
 Reference the `bundle.js` file in the package `dist` folder.
@@ -88,6 +92,11 @@ SwiftSell
 
 - `getProducts(queryObject)`
 - `getSingleProduct()`
+
+### Forms
+
+- `processEmailSubscriptionForm()`
+- `processContactUsForm()`
 
 ### Authentication
 

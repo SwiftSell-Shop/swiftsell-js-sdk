@@ -138,6 +138,38 @@ export class SwiftSellSDK implements ISwiftSellSDK {
         return result.data;
 
     }
+
+
+    public async processContactUsForm(
+        data
+            : {
+                name: string,
+                email: string,
+                body: string,
+                subject: string,
+            }
+    ): Promise<any> {
+        const response = await this.apiClient.POST(`/customer/send_contact_form_email`, {
+            ...data
+        } as ObjectType);
+        if (!response.ok) {
+            await this.handleError(response);
+        }
+        const result = await response.json()
+        return result.data;
+    }
+
+    public async processEmailSubscriptionForm(
+        email: string): Promise<any> {
+        const response = await this.apiClient.POST(`/customer/process_email_subscription`, {
+            email
+        } as ObjectType);
+        if (!response.ok) {
+            await this.handleError(response);
+        }
+        const result = await response.json()
+        return result.data;
+    }
 }
 
 
