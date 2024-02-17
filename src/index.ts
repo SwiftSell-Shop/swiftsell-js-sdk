@@ -170,6 +170,15 @@ export class SwiftSellSDK implements ISwiftSellSDK {
         const result = await response.json()
         return result.data;
     }
+
+    public async getOrderByCode(orderCode: string): Promise<any> {
+        const response = await this.apiClient.GET(`/customer/get_order_from_code?code=${orderCode}`);
+        if (!response.ok) {
+            await this.handleError(response);
+        }
+        const result = await response.json()
+        return result.data;
+    }
 }
 
 
